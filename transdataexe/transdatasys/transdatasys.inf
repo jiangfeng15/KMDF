@@ -1,0 +1,86 @@
+;
+; transdatasys.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=transdatasys.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+
+[DestinationDirs]
+DefaultDestDir = 12
+transdatasys_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+transdatasys.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%transdatasys.DeviceDesc%=transdatasys_Device, Root\transdatasys ; TODO: edit hw-id
+
+[transdatasys_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+transdatasys.sys
+
+;-------------- Service installation
+[transdatasys_Device.NT.Services]
+AddService = transdatasys,%SPSVCINST_ASSOCSERVICE%, transdatasys_Service_Inst
+
+; -------------- transdatasys driver install sections
+[transdatasys_Service_Inst]
+DisplayName    = %transdatasys.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\transdatasys.sys
+
+;
+;--- transdatasys_Device Coinstaller installation ------
+;
+
+[transdatasys_Device.NT.CoInstallers]
+AddReg=transdatasys_Device_CoInstaller_AddReg
+CopyFiles=transdatasys_Device_CoInstaller_CopyFiles
+
+[transdatasys_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[transdatasys_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[transdatasys_Device.NT.Wdf]
+KmdfService =  transdatasys, transdatasys_wdfsect
+[transdatasys_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "transdatasys Installation Disk"
+transdatasys.DeviceDesc = "transdatasys Device"
+transdatasys.SVCDESC = "transdatasys Service"

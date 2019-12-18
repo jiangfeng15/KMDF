@@ -1,0 +1,7 @@
+﻿  pch.cpp
+  transdataexe.cpp
+  Compiling d:\vs2017\driverproject\transdataexe\transdataexe\transdataexe.cpp
+  Last modified on Thu Dec  5 13:40:32 2019
+  Remember to write some actual code in this sample app!!
+d:\vs2017\driverproject\transdataexe\transdataexe\transdataexe.cpp(16): warning C4081: 应输入“newline”；找到“)”
+  transdataexe.vcxproj -> D:\VS2017\driverProject\transdataexe\x64\Debug\transdataexe.exe

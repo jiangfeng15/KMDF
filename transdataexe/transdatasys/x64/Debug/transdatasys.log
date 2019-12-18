@@ -1,0 +1,30 @@
+﻿  Building 'transdatasys' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\transdatasys.inf
+  Stamping [Version] section with DriverVer=12/18/2019,9.53.2.38
+  main.c
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(72): warning C4100: “pDevobj”: 未引用的形参
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(100): warning C4189: “status”: 局部变量已初始化但不引用
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(102): warning C4189: “cbout”: 局部变量已初始化但不引用
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(101): warning C4189: “cbin”: 局部变量已初始化但不引用
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(154): warning C4081: 应输入“newline”；找到“;”
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(155): warning C4100: “reg_path”: 未引用的形参
+d:\vs2017\driverproject\transdataexe\transdatasys\main.c(148): warning C4701: 使用了可能未初始化的局部变量“info”
+  transdatasys.vcxproj -> D:\VS2017\driverProject\transdataexe\x64\Debug\transdatasys.sys
+  Done Adding Additional Store
+  Successfully signed: D:\VS2017\driverProject\transdataexe\x64\Debug\transdatasys.sys
+  
+  Driver is a Universal Driver.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  D:\VS2017\driverProject\transdataexe\x64\Debug\transdatasys\transdatasys.cat
+  Done Adding Additional Store
+  Successfully signed: D:\VS2017\driverProject\transdataexe\x64\Debug\transdatasys\transdatasys.cat
+  
